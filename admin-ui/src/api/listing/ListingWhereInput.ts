@@ -1,7 +1,7 @@
 import { StringFilter } from "../../util/StringFilter";
 import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { JsonFilter } from "../../util/JsonFilter";
-import { IntFilter } from "../../util/IntFilter";
+import { FloatFilter } from "../../util/FloatFilter";
 import { TripListRelationFilter } from "../trip/TripListRelationFilter";
 import { WishlistListRelationFilter } from "../wishlist/WishlistListRelationFilter";
 
@@ -13,10 +13,10 @@ export type ListingWhereInput = {
   locationType?: StringFilter;
   mapData?: JsonFilter;
   photos?: JsonFilter;
-  placeAmeneites?: JsonFilter;
+  placeAmenities?: JsonFilter;
   placeSpace?: JsonFilter;
-  placetype?: StringFilter;
-  price?: IntFilter;
+  placeType?: StringFilter;
+  price?: FloatFilter;
   title?: StringFilter;
   trips?: TripListRelationFilter;
   wishlists?: WishlistListRelationFilter;

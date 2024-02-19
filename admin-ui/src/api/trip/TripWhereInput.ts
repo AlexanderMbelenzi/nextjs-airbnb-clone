@@ -6,6 +6,6 @@ import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 export type TripWhereInput = {
   id?: StringFilter;
   listing?: ListingWhereUniqueInput;
-  tripData?: JsonFilter;
+  tripinfo?: JsonFilter;
   user?: UserWhereUniqueInput;
 };

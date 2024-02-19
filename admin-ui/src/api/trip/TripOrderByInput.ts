@@ -4,7 +4,7 @@ export type TripOrderByInput = {
   createdAt?: SortOrder;
   id?: SortOrder;
   listingId?: SortOrder;
-  tripData?: SortOrder;
+  tripinfo?: SortOrder;
   updatedAt?: SortOrder;
   userId?: SortOrder;
 };

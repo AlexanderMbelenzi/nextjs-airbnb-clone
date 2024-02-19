@@ -10,9 +10,9 @@ export type ListingCreateInput = {
   locationType: string;
   mapData: InputJsonValue;
   photos: InputJsonValue;
-  placeAmeneites: InputJsonValue;
+  placeAmenities: InputJsonValue;
   placeSpace: InputJsonValue;
-  placetype: string;
+  placeType: string;
   price: number;
   title: string;
   trips?: TripCreateNestedManyWithoutListingsInput;

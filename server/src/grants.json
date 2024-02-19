@@ -30,21 +30,9 @@
     "attributes": "*"
   },
   {
-    "role": "airbnbUser",
-    "resource": "Listing",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "user",
     "resource": "Listing",
     "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "airbnbUser",
-    "resource": "Listing",
-    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -54,7 +42,7 @@
     "attributes": "*"
   },
   {
-    "role": "airbnbUser",
+    "role": "user",
     "resource": "Listing",
     "action": "update:any",
     "attributes": "*"
@@ -62,25 +50,7 @@
   {
     "role": "user",
     "resource": "Listing",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "airbnbUser",
-    "resource": "Listing",
     "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Listing",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "airbnbUser",
-    "resource": "Listing",
-    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -90,21 +60,9 @@
     "attributes": "*"
   },
   {
-    "role": "airbnbUser",
-    "resource": "Wishlist",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "user",
     "resource": "Wishlist",
     "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "airbnbUser",
-    "resource": "Wishlist",
-    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -114,7 +72,7 @@
     "attributes": "*"
   },
   {
-    "role": "airbnbUser",
+    "role": "user",
     "resource": "Wishlist",
     "action": "update:any",
     "attributes": "*"
@@ -122,25 +80,7 @@
   {
     "role": "user",
     "resource": "Wishlist",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "airbnbUser",
-    "resource": "Wishlist",
     "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Wishlist",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "airbnbUser",
-    "resource": "Wishlist",
-    "action": "read:any",
     "attributes": "*"
   },
   {
@@ -150,21 +90,9 @@
     "attributes": "*"
   },
   {
-    "role": "airbnbUser",
-    "resource": "Trip",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
     "role": "user",
     "resource": "Trip",
     "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "airbnbUser",
-    "resource": "Trip",
-    "action": "create:any",
     "attributes": "*"
   },
   {
@@ -174,7 +102,7 @@
     "attributes": "*"
   },
   {
-    "role": "airbnbUser",
+    "role": "user",
     "resource": "Trip",
     "action": "update:any",
     "attributes": "*"
@@ -182,25 +110,7 @@
   {
     "role": "user",
     "resource": "Trip",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "airbnbUser",
-    "resource": "Trip",
     "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Trip",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "airbnbUser",
-    "resource": "Trip",
-    "action": "read:any",
     "attributes": "*"
   },
   {
