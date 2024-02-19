@@ -15,12 +15,12 @@ import {
   IsDate,
   IsString,
   ValidateNested,
-  IsInt,
+  IsNumber,
   IsOptional,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { User } from "../../user/base/User";
-import { IsJSONValue } from "@app/custom-validators";
+import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { JsonValue } from "type-fest";
 import { Trip } from "../../trip/base/Trip";
@@ -94,7 +94,7 @@ class Listing {
   })
   @IsJSONValue()
   @Field(() => GraphQLJSON)
-  placeAmeneites!: JsonValue;
+  placeAmenities!: JsonValue;
 
   @ApiProperty({
     required: true,
@@ -109,13 +109,13 @@ class Listing {
   })
   @IsString()
   @Field(() => String)
-  placetype!: string;
+  placeType!: string;
 
   @ApiProperty({
     required: true,
     type: Number,
   })
-  @IsInt()
+  @IsNumber()
   @Field(() => Number)
   price!: number;
 

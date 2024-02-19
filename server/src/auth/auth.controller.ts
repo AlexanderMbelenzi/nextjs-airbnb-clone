@@ -1,7 +1,11 @@
 import { Body, Controller, Get, Post, Req } from "@nestjs/common";
 import { ApiBearerAuth, ApiOkResponse, ApiTags } from "@nestjs/swagger";
 import { AuthService } from "./auth.service";
+amplication-airbnb-server
+import { Credentials } from "../auth/Credentials";
+=======
 import { CheckUserValues, Credentials, SignupCredentials } from "./Credentials";
+master
 import { UserInfo } from "./UserInfo";
 import { User } from "src/user/base/User";
 import { Request } from "express";

@@ -52,7 +52,7 @@ class TripWhereInput {
   @Field(() => JsonFilter, {
     nullable: true,
   })
-  tripData?: JsonFilter;
+  tripinfo?: JsonFilter;
 
   @ApiProperty({
     required: false,

@@ -6,7 +6,7 @@ export type Trip = {
   createdAt: Date;
   id: string;
   listing?: Listing;
-  tripData: JsonValue;
+  tripinfo: JsonValue;
   updatedAt: Date;
   user?: User;
 };

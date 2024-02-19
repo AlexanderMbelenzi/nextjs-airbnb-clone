@@ -22,11 +22,10 @@ import { ListingService } from "../listing.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { ListingCreateInput } from "./ListingCreateInput";
-import { ListingWhereInput } from "./ListingWhereInput";
-import { ListingWhereUniqueInput } from "./ListingWhereUniqueInput";
-import { ListingFindManyArgs } from "./ListingFindManyArgs";
-import { ListingUpdateInput } from "./ListingUpdateInput";
 import { Listing } from "./Listing";
+import { ListingFindManyArgs } from "./ListingFindManyArgs";
+import { ListingWhereUniqueInput } from "./ListingWhereUniqueInput";
+import { ListingUpdateInput } from "./ListingUpdateInput";
 import { TripFindManyArgs } from "../../trip/base/TripFindManyArgs";
 import { Trip } from "../../trip/base/Trip";
 import { TripWhereUniqueInput } from "../../trip/base/TripWhereUniqueInput";
@@ -55,8 +54,10 @@ export class ListingControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async create(@common.Body() data: ListingCreateInput): Promise<Listing> {
-    return await this.service.create({
+  async createListing(
+    @common.Body() data: ListingCreateInput
+  ): Promise<Listing> {
+    return await this.service.createListing({
       data: {
         ...data,
 
@@ -79,9 +80,9 @@ export class ListingControllerBase {
         locationType: true,
         mapData: true,
         photos: true,
-        placeAmeneites: true,
+        placeAmenities: true,
         placeSpace: true,
-        placetype: true,
+        placeType: true,
         price: true,
         title: true,
         updatedAt: true,
@@ -93,6 +94,17 @@ export class ListingControllerBase {
   @common.Get()
   @swagger.ApiOkResponse({ type: [Listing] })
   @ApiNestedQuery(ListingFindManyArgs)
+  amplication-airbnb-server
+  @nestAccessControl.UseRoles({
+    resource: "Listing",
+    action: "read",
+    possession: "any",
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async listings(@common.Req() request: Request): Promise<Listing[]> {
+=======
   // @nestAccessControl.UseRoles({
   //   resource: "Listing",
   //   action: "read",
@@ -102,8 +114,9 @@ export class ListingControllerBase {
   //   type: errors.ForbiddenException,
   // })
   async findMany(@common.Req() request: Request): Promise<Listing[]> {
+  master
     const args = plainToClass(ListingFindManyArgs, request.query);
-    return this.service.findMany({
+    return this.service.listings({
       ...args,
       select: {
         createdAt: true,
@@ -120,9 +133,9 @@ export class ListingControllerBase {
         locationType: true,
         mapData: true,
         photos: true,
-        placeAmeneites: true,
+        placeAmenities: true,
         placeSpace: true,
-        placetype: true,
+        placeType: true,
         price: true,
         title: true,
         updatedAt: true,
@@ -134,6 +147,17 @@ export class ListingControllerBase {
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: Listing })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  amplication-airbnb-server
+  @nestAccessControl.UseRoles({
+    resource: "Listing",
+    action: "read",
+    possession: "own",
+  })
+  @swagger.ApiForbiddenResponse({
+    type: errors.ForbiddenException,
+  })
+  async listing(
+=======
   // @nestAccessControl.UseRoles({
   //   resource: "Listing",
   //   action: "read",
@@ -143,9 +167,10 @@ export class ListingControllerBase {
   //   type: errors.ForbiddenException,
   // })
   async findOne(
+  master
     @common.Param() params: ListingWhereUniqueInput
   ): Promise<Listing | null> {
-    const result = await this.service.findOne({
+    const result = await this.service.listing({
       where: params,
       select: {
         createdAt: true,
@@ -164,9 +189,9 @@ export class ListingControllerBase {
         locationType: true,
         mapData: true,
         photos: true,
-        placeAmeneites: true,
+        placeAmenities: true,
         placeSpace: true,
-        placetype: true,
+        placeType: true,
         price: true,
         title: true,
         updatedAt: true,
@@ -192,17 +217,21 @@ export class ListingControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+amplication-airbnb-server
+  async updateListing(
+=======
   @common.UseGuards(
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
   @swagger.ApiBearerAuth()
   async update(
+ master
     @common.Param() params: ListingWhereUniqueInput,
     @common.Body() data: ListingUpdateInput
   ): Promise<Listing | null> {
     try {
-      return await this.service.update({
+      return await this.service.updateListing({
         where: params,
         data: {
           ...data,
@@ -226,9 +255,9 @@ export class ListingControllerBase {
           locationType: true,
           mapData: true,
           photos: true,
-          placeAmeneites: true,
+          placeAmenities: true,
           placeSpace: true,
-          placetype: true,
+          placeType: true,
           price: true,
           title: true,
           updatedAt: true,
@@ -255,16 +284,20 @@ export class ListingControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+amplication-airbnb-server
+  async deleteListing(
+=======
   @common.UseGuards(
     defaultAuthGuard.DefaultAuthGuard,
     nestAccessControl.ACGuard
   )
   @swagger.ApiBearerAuth()
   async delete(
+master
     @common.Param() params: ListingWhereUniqueInput
   ): Promise<Listing | null> {
     try {
-      return await this.service.delete({
+      return await this.service.deleteListing({
         where: params,
         select: {
           createdAt: true,
@@ -281,9 +314,9 @@ export class ListingControllerBase {
           locationType: true,
           mapData: true,
           photos: true,
-          placeAmeneites: true,
+          placeAmenities: true,
           placeSpace: true,
-          placetype: true,
+          placeType: true,
           price: true,
           title: true,
           updatedAt: true,
@@ -307,7 +340,7 @@ export class ListingControllerBase {
     action: "read",
     possession: "any",
   })
-  async findManyTrips(
+  async findTrips(
     @common.Req() request: Request,
     @common.Param() params: ListingWhereUniqueInput
   ): Promise<Trip[]> {
@@ -324,7 +357,7 @@ export class ListingControllerBase {
           },
         },
 
-        tripData: true,
+        tripinfo: true,
         updatedAt: true,
 
         user: {
@@ -357,7 +390,7 @@ export class ListingControllerBase {
         connect: body,
       },
     };
-    await this.service.update({
+    await this.service.updateListing({
       where: params,
       data,
       select: { id: true },
@@ -379,7 +412,7 @@ export class ListingControllerBase {
         set: body,
       },
     };
-    await this.service.update({
+    await this.service.updateListing({
       where: params,
       data,
       select: { id: true },
@@ -401,7 +434,7 @@ export class ListingControllerBase {
         disconnect: body,
       },
     };
-    await this.service.update({
+    await this.service.updateListing({
       where: params,
       data,
       select: { id: true },
@@ -416,7 +449,7 @@ export class ListingControllerBase {
     action: "read",
     possession: "any",
   })
-  async findManyWishlists(
+  async findWishlists(
     @common.Req() request: Request,
     @common.Param() params: ListingWhereUniqueInput
   ): Promise<Wishlist[]> {
@@ -465,7 +498,7 @@ export class ListingControllerBase {
         connect: body,
       },
     };
-    await this.service.update({
+    await this.service.updateListing({
       where: params,
       data,
       select: { id: true },
@@ -487,7 +520,7 @@ export class ListingControllerBase {
         set: body,
       },
     };
-    await this.service.update({
+    await this.service.updateListing({
       where: params,
       data,
       select: { id: true },
@@ -509,7 +542,7 @@ export class ListingControllerBase {
         disconnect: body,
       },
     };
-    await this.service.update({
+    await this.service.updateListing({
       where: params,
       data,
       select: { id: true },

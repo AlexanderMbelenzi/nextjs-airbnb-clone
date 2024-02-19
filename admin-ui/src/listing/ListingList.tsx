@@ -34,9 +34,9 @@ export const ListingList = (props: ListProps): React.ReactElement => {
         <TextField label="locationType" source="locationType" />
         <TextField label="mapData" source="mapData" />
         <TextField label="photos" source="photos" />
-        <TextField label="placeAmeneites" source="placeAmeneites" />
+        <TextField label="placeAmenities" source="placeAmenities" />
         <TextField label="placeSpace" source="placeSpace" />
-        <TextField label="placetype" source="placetype" />
+        <TextField label="placeType" source="placeType" />
         <TextField label="price" source="price" />
         <TextField label="title" source="title" />
         <DateField source="updatedAt" label="Updated At" />

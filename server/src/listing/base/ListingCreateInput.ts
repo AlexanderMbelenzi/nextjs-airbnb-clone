@@ -11,10 +11,15 @@ https://docs.amplication.com/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, ValidateNested, IsInt, IsOptional } from "class-validator";
+import {
+  IsString,
+  ValidateNested,
+  IsNumber,
+  IsOptional,
+} from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
-import { IsJSONValue } from "@app/custom-validators";
+import { IsJSONValue } from "../../validators";
 import { GraphQLJSON } from "graphql-type-json";
 import { InputJsonValue } from "../../types";
 import { TripCreateNestedManyWithoutListingsInput } from "./TripCreateNestedManyWithoutListingsInput";
@@ -73,7 +78,7 @@ class ListingCreateInput {
   })
   @IsJSONValue()
   @Field(() => GraphQLJSON)
-  placeAmeneites!: InputJsonValue;
+  placeAmenities!: InputJsonValue;
 
   @ApiProperty({
     required: true,
@@ -88,13 +93,13 @@ class ListingCreateInput {
   })
   @IsString()
   @Field(() => String)
-  placetype!: string;
+  placeType!: string;
 
   @ApiProperty({
     required: true,
     type: Number,
   })
-  @IsInt()
+  @IsNumber()
   @Field(() => Number)
   price!: number;
 

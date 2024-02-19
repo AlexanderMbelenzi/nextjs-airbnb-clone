@@ -22,11 +22,10 @@ import { TripService } from "../trip.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { TripCreateInput } from "./TripCreateInput";
-import { TripWhereInput } from "./TripWhereInput";
-import { TripWhereUniqueInput } from "./TripWhereUniqueInput";
-import { TripFindManyArgs } from "./TripFindManyArgs";
-import { TripUpdateInput } from "./TripUpdateInput";
 import { Trip } from "./Trip";
+import { TripFindManyArgs } from "./TripFindManyArgs";
+import { TripWhereUniqueInput } from "./TripWhereUniqueInput";
+import { TripUpdateInput } from "./TripUpdateInput";
 
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
@@ -46,8 +45,8 @@ export class TripControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async create(@common.Body() data: TripCreateInput): Promise<Trip> {
-    return await this.service.create({
+  async createTrip(@common.Body() data: TripCreateInput): Promise<Trip> {
+    return await this.service.createTrip({
       data: {
         ...data,
 
@@ -69,7 +68,7 @@ export class TripControllerBase {
           },
         },
 
-        tripData: true,
+        tripinfo: true,
         updatedAt: true,
 
         user: {
@@ -93,9 +92,9 @@ export class TripControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async findMany(@common.Req() request: Request): Promise<Trip[]> {
+  async trips(@common.Req() request: Request): Promise<Trip[]> {
     const args = plainToClass(TripFindManyArgs, request.query);
-    return this.service.findMany({
+    return this.service.trips({
       ...args,
       select: {
         createdAt: true,
@@ -107,7 +106,12 @@ export class TripControllerBase {
             title: true,
           },
         },
+ amplication-airbnb-server
+
+        tripinfo: true,
+=======
         tripData: true,
+ master
         updatedAt: true,
 
         user: {
@@ -131,10 +135,10 @@ export class TripControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async findOne(
+  async trip(
     @common.Param() params: TripWhereUniqueInput
   ): Promise<Trip | null> {
-    const result = await this.service.findOne({
+    const result = await this.service.trip({
       where: params,
       select: {
         createdAt: true,
@@ -146,7 +150,7 @@ export class TripControllerBase {
           },
         },
 
-        tripData: true,
+        tripinfo: true,
         updatedAt: true,
 
         user: {
@@ -176,12 +180,12 @@ export class TripControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async update(
+  async updateTrip(
     @common.Param() params: TripWhereUniqueInput,
     @common.Body() data: TripUpdateInput
   ): Promise<Trip | null> {
     try {
-      return await this.service.update({
+      return await this.service.updateTrip({
         where: params,
         data: {
           ...data,
@@ -204,7 +208,7 @@ export class TripControllerBase {
             },
           },
 
-          tripData: true,
+          tripinfo: true,
           updatedAt: true,
 
           user: {
@@ -235,11 +239,11 @@ export class TripControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
-  async delete(
+  async deleteTrip(
     @common.Param() params: TripWhereUniqueInput
   ): Promise<Trip | null> {
     try {
-      return await this.service.delete({
+      return await this.service.deleteTrip({
         where: params,
         select: {
           createdAt: true,
@@ -251,7 +255,7 @@ export class TripControllerBase {
             },
           },
 
-          tripData: true,
+          tripinfo: true,
           updatedAt: true,
 
           user: {
