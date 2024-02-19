@@ -33,13 +33,16 @@ import { WishlistFindManyArgs } from "../../wishlist/base/WishlistFindManyArgs";
 import { Wishlist } from "../../wishlist/base/Wishlist";
 import { WishlistWhereUniqueInput } from "../../wishlist/base/WishlistWhereUniqueInput";
 
-@swagger.ApiBearerAuth()
-@common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class ListingControllerBase {
   constructor(
     protected readonly service: ListingService,
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
+  @common.UseGuards(
+    defaultAuthGuard.DefaultAuthGuard,
+    nestAccessControl.ACGuard
+  )
+  @swagger.ApiBearerAuth()
   @common.UseInterceptors(AclValidateRequestInterceptor)
   @common.Post()
   @swagger.ApiCreatedResponse({ type: Listing })
@@ -87,10 +90,11 @@ export class ListingControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  // @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get()
   @swagger.ApiOkResponse({ type: [Listing] })
   @ApiNestedQuery(ListingFindManyArgs)
+  amplication-airbnb-server
   @nestAccessControl.UseRoles({
     resource: "Listing",
     action: "read",
@@ -100,6 +104,17 @@ export class ListingControllerBase {
     type: errors.ForbiddenException,
   })
   async listings(@common.Req() request: Request): Promise<Listing[]> {
+=======
+  // @nestAccessControl.UseRoles({
+  //   resource: "Listing",
+  //   action: "read",
+  //   possession: "any",
+  // })
+  // @swagger.ApiForbiddenResponse({
+  //   type: errors.ForbiddenException,
+  // })
+  async findMany(@common.Req() request: Request): Promise<Listing[]> {
+  master
     const args = plainToClass(ListingFindManyArgs, request.query);
     return this.service.listings({
       ...args,
@@ -128,10 +143,11 @@ export class ListingControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  // @common.UseInterceptors(AclFilterResponseInterceptor)
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: Listing })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
+  amplication-airbnb-server
   @nestAccessControl.UseRoles({
     resource: "Listing",
     action: "read",
@@ -141,6 +157,17 @@ export class ListingControllerBase {
     type: errors.ForbiddenException,
   })
   async listing(
+=======
+  // @nestAccessControl.UseRoles({
+  //   resource: "Listing",
+  //   action: "read",
+  //   possession: "own",
+  // })
+  // @swagger.ApiForbiddenResponse({
+  //   type: errors.ForbiddenException,
+  // })
+  async findOne(
+  master
     @common.Param() params: ListingWhereUniqueInput
   ): Promise<Listing | null> {
     const result = await this.service.listing({
@@ -153,6 +180,8 @@ export class ListingControllerBase {
         listingCreatedBy: {
           select: {
             id: true,
+            firstName: true,
+            lastName: true,
           },
         },
 
@@ -188,7 +217,16 @@ export class ListingControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+amplication-airbnb-server
   async updateListing(
+=======
+  @common.UseGuards(
+    defaultAuthGuard.DefaultAuthGuard,
+    nestAccessControl.ACGuard
+  )
+  @swagger.ApiBearerAuth()
+  async update(
+ master
     @common.Param() params: ListingWhereUniqueInput,
     @common.Body() data: ListingUpdateInput
   ): Promise<Listing | null> {
@@ -246,7 +284,16 @@ export class ListingControllerBase {
   @swagger.ApiForbiddenResponse({
     type: errors.ForbiddenException,
   })
+amplication-airbnb-server
   async deleteListing(
+=======
+  @common.UseGuards(
+    defaultAuthGuard.DefaultAuthGuard,
+    nestAccessControl.ACGuard
+  )
+  @swagger.ApiBearerAuth()
+  async delete(
+master
     @common.Param() params: ListingWhereUniqueInput
   ): Promise<Listing | null> {
     try {

@@ -103,10 +103,15 @@ export class TripControllerBase {
         listing: {
           select: {
             id: true,
+            title: true,
           },
         },
+ amplication-airbnb-server
 
         tripinfo: true,
+=======
+        tripData: true,
+ master
         updatedAt: true,
 
         user: {
